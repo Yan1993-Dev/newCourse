@@ -1,0 +1,142 @@
+* {
+    text-decoration: none;
+}
+
+
+.container_site {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 195px;
+}
+
+img {
+    width: 200px;
+    height: 150px;
+}
+.tabs {
+    max-width: 1200px;
+}
+
+.tabs__central {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.tabs__nav {
+    flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.tabs__nav__second {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.tabs__nav-btn {
+    padding: 15px 25px;
+    font-size: 20px;
+    background-color: #fff;
+    border: 0;
+    border-right: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.tabs__nav-btn:last-child {
+    border-right: none;
+}
+
+.tabs__nav-btn:hover {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    background-color: #ddd;
+}
+
+.tabs__nav-btn.active {
+    color: #fff;
+    background-color: #ddd;
+}
+
+.sub__tabs__item.active {
+    color: #fff;
+    background-color: #ddd;
+}
+
+.tabs__content {
+    padding: 30px;
+    background-color: #fff;
+}
+
+.tabs__item {
+    display: none;
+}
+
+.tabs__item__fl {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.tabs__link__fl {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.tabs__link__fl:hover {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    background-color: #ddd;
+}
+
+.tabs__item__desc {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 20px;
+}
+
+.model_catalog__title {
+    font-size: 20px;
+    line-height: calc(24/20);
+    color: #000;
+    text-transform: uppercase;
+}
+
+.model_catalog__price {
+    color: #000;
+    font-size: 18px;
+    line-height: calc(32/18);
+}
+
+.tabs__item.active {
+    display: block;
+}
+
+.tab__img {
+    width: 110px;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
