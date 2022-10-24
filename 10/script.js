@@ -4,49 +4,47 @@ const buttonCloseModalRegister = document.querySelector(".j-close-modal-register
 const loaderRegister = modalRegister.querySelector(".loader_js");
 const registerForm = document.forms.registerForm;
 
+const buttonOpeningModalLogin = document.querySelector(".j-login-button");
+const modalLogin = document.querySelector(".j-modal-login");
+const buttonCloseModalLogin = document.querySelector(".j-close-modal-login");
+const loginForm = document.forms.loginForm;
+
 const linkToProfile = document.querySelector(".j-to-profile");
 
-
+// Логика регистрации пользователя
+let isLoading = false;
 function register(e) {
   e.preventDefault();
+  if(isLoading) {
+    return;
+  }
+  isLoading = true;
   loaderRegister.classList.remove('hidden');
-  let data = {};
-  data.email = registerForm.email.value;
-  data.name = registerForm.name.value;
-  data.surname = registerForm.surname.value;
-  data.password = registerForm.password.value;
-  data.location = registerForm.location.value;
-  data.age = +registerForm.age.value;
+  const data = getDataFromForm(e.target);
+  console.log(data);
   sendRequest({
-    method: 'POST', 
-    url: '/api/users', 
+    url: '/api/users',
+    method: 'POST',
     body: JSON.stringify(data),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=utf-8'
     },
   })
-    .then(res => res.json())
-    .then(res => {
-      if(res.success) {
-        interactionModal(modalRegister);
-        alert(`Пользователь c id ${res.data.id} & email ${res.data.email} создан!`);
-        registerForm.email.value = '';
-        registerForm.name.value = '';
-        registerForm.surname.value = '';
-        registerForm.password.value = '';
-        registerForm.location.value = '';
-        registerForm.age.value = '';
-      } else {
-        throw res;
-      }
-    })
-    .catch(err => {
-      clearErorrs(registerForm);
-      errorFormHandler(err.errors, registerForm);
-    })
-    .finally(() => {
+  .then(res => res.json())
+  .then(res => {
+    if(!res.success) {
+      throw res;
+    } else {
+      console.log('then', res);
+      isLoading = false;
       loaderRegister.classList.add('hidden');
-    });
+    }
+  })
+  .catch(err => {
+    setErrorsToForm(e.target, err.errors);
+    isLoading = false;
+    loaderRegister.classList.add('hidden');
+  });
 }
 
 buttonOpeningModalRegister.addEventListener('click', () => {
@@ -54,13 +52,14 @@ buttonOpeningModalRegister.addEventListener('click', () => {
 });
 buttonCloseModalRegister.addEventListener('click', () => {
   interactionModal(modalRegister);
-  registerForm.email.value = '';
-  registerForm.name.value = '';
-  registerForm.surname.value = '';
-  registerForm.password.value = '';
-  registerForm.location.value = '';
-  registerForm.age.value = '';
-  clearErorrs(registerForm);
+});
+buttonCloseModalLogin.addEventListener('click', () => {
+  interactionModal(modalLogin);
 });
 
-registerForm.addEventListener('submit', register);
+registerForm.addEventListener('submit', (e) => {
+  register(e);
+});
+loginForm.addEventListener('submit', (e) => {
+  logIn(e);
+});
