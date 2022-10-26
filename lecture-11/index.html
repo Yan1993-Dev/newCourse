@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Login / Register</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container header__content">
+      <a href="/" class="header__link header__link_active">Main</a>
+      <div>
+        <button class="header__link j-login-button">Login</button>
+        <button class="header__link j-register-button">Register</button>
+        <a href="/profile" class="header__link j-profile-button hidden">To profile</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="modal j-modal-register hidden">
+    <div class="modal__content">
+      <div class="modal__close-button j-close-modal-register">X</div>
+      <form name="registerForm" class="modal__form">
+        <input required type="text" placeholder="name" name="name" class="modal__input">
+        <input required type="text" placeholder="surname" name="surname" class="modal__input">
+        <input required type="email" placeholder="email" name="email" class="modal__input">
+        <input required type="password" placeholder="password" name="password" class="modal__input">
+        <input required type="text" placeholder="location" name="location" class="modal__input">
+        <input required type="number" placeholder="age" name="age" class="modal__input">
+        <button class="site-button">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal j-modal-login hidden">
+    <div class="modal__content">
+      <div class="modal__close-button j-close-modal-login">X</div>
+      <form name="loginForm" class="modal__form">
+        <input required type="email" placeholder="email" name="email" class="modal__input">
+        <input required type="password" placeholder="password" name="password" class="modal__input">
+        <button class="site-button">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
